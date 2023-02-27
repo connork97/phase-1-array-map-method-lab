@@ -12,5 +12,38 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  return tutorials.map(function(tutorialArr) {
+    return tutorialArr.split(' ').map(function(splitWord) {
+      return (splitWord[0].toUpperCase() + splitWord.substring(1));
+    }).join(' ');
+  });
 }
+
+// Demonstrating in console that the function works without affecting the original "tutorials" array:
+
+console.log(tutorials);
+titleCased();
+console.log(titleCased());
+console.log(tutorials);
+
+
+// Working Method Below But Without Map Method
+
+/*
+function titleCased(tutorialsArr) {
+  const tutorialsArrCopy = []
+  for (let i = 0; i < tutorialsArr.length; i++) {
+    const sentenceArr = tutorialsArr[i].split(" ");
+    for (let j = 0; j < sentenceArr.length; j++) {
+        sentenceArr[j] = sentenceArr[j][0].toUpperCase() + sentenceArr[j].substring(1);
+      }
+    const joinedSentence = sentenceArr.join(" ")
+    tutorialsArrCopy.push(joinedSentence)
+  }
+  return tutorialsArrCopy;
+}
+
+titleCased(tutorials);
+console.log(tutorials);
+console.log(titleCased(tutorials));
+*/
